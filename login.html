@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <style>
+      * {
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      h3 {
+        color: #fdfdfd; /* Altera a cor do título h1 para vermelho */
+      }
+
+      body {
+        background-image: url("imagens/fundo.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0; /* Cor de fundo caso a imagem não carregue */
+      }
+
+      form {
+        width: 300px;
+        margin: 200px auto;
+        text-align: center;
+      }
+
+      input {
+        display: block;
+        margin: 10px auto;
+        width: 250px;
+        height: 30px;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <form>
+      <h3>Login</h3>
+      <input type="text" placeholder="Login" id="login" />
+      <input type="password" placeholder="Senha" id="senha" />
+      <input type="submit" onclick="logar(); return false" />
+      <input type="button" value="Cadastro" onclick="window.location.href='cadastro.html';" />
+    </form>
+
+    <script>
+      function logar() {
+        var login = document.getElementById("login").value;
+        var senha = document.getElementById("senha").value;
+
+        if (login == "admin" && senha == "admin") {
+          alert("Sucesso");
+          location.href = "inicio.html";
+        } else {
+          alert("Usuario ou senha incorretos");
+        }
+      }
+    </script>
+  </body>
+</html>

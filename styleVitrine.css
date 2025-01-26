@@ -1,0 +1,287 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+
+#menu a {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-decoration: none;
+  font-size: 22px;
+  text-align: center;
+  padding: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: white;
+}
+
+#menu a:hover {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border-radius: 0.8em;
+}
+
+#cu a:hover{
+  background-color: transparent;
+}
+
+
+.header {
+  background: orange;
+  padding-inline: 16px;
+}
+
+.nav {
+  max-width: 1280px;
+  height: 70px;
+  margin-inline: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav .logo {
+  height: 76px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-list a {
+  font-size: 18px;
+  color: #fff;
+  padding-block: 16px;
+
+}
+
+.nav-list img {
+  width: 60px;
+  margin: 0; 
+  position: absolute; 
+  right: 20px; 
+  top: 5px;
+ 
+}
+.hamburger {
+  display: none;
+  border: none;
+  background: none;
+  border-top: 3px solid #fff;
+  cursor: pointer;
+}
+
+.hamburger::after,
+.hamburger::before {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  margin-top: 5px;
+  position: relative;
+  transition: 0.3s;
+  z-index: 1;
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-y: hidden;
+}
+
+section div.background-section {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+section div.background-section video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  top: 0;
+  left: 0;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+section div.box {
+  width: 100%;
+  padding: 2%;
+  background: (to right rgba(0, 0, 0, 0.9), transparent);
+}
+section div.box div.conteudo {
+  width: 100%;
+  text-align: center;
+}
+
+section div.box {
+  width: 50%;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section div.box div.conteudo {
+  width: 80%;
+}
+
+section div.box img {
+  width: 80%;
+  min-width: 300px;
+}
+
+section div.box p {
+  color: white;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+@media (max-width: 768px) {
+  
+  section {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  section div.background-section video {
+    width: 100vw;
+    height: 100%;
+
+    z-index: -1;
+  }
+
+  .hamburger {
+    display: block;
+    z-index: 7025;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: orange;
+    clip-path: circle(100px at 90% -15%);
+    transition: 1s ease-out;
+
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+
+    pointer-events: none;
+    z-index: 7024;
+  }
+
+  .nav-list a {
+    font-size: 24px;
+    opacity: 0;
+  }
+
+  .nav-list img {
+    top: 800px;
+    right: 222px;
+  }
+
+  .nav-list li:nth-child(1) a {
+    transition: 0.5s 0.2s;
+  }
+
+  .nav-list li:nth-child(2) a {
+    transition: 0.5s 0.4s;
+  }
+
+  .nav-list li:nth-child(3) a {
+    transition: 0.5s 0.6s;
+  }
+
+  .nav-list li:nth-child(4) img {
+    transition: opacity 0.5s ease, transform 0.5s ease 0.6s;
+}
+  /* Estilos ativos */
+
+  .nav.active .nav-list {
+    clip-path: circle(1500px at 90% -15%);
+    pointer-events: all;
+  }
+
+  .nav.active .nav-list a {
+    opacity: 1;
+  }
+
+ 
+
+  .nav.active .hamburger {
+    position: fixed;
+    top: 26px;
+    right: 16px;
+    border-top-color: transparent;
+  }
+
+  .nav.active .hamburger::before {
+    transform: rotate(135deg);
+  }
+
+  .nav.active .hamburger::after {
+    transform: rotate(-135deg);
+    top: -7px;
+  }
+
+  section div.box {
+    width: 100%;
+    height: 100vh;
+    position: center;
+    z-index: -1;
+    background: linear-gradient(to right, rgba(255, 137, 2, 0.9), rgb(231, 217, 11));
+  }
+
+  section div.box div.conteudo {
+    width: 100%;
+   
+  }
+
+  section div.box img {
+    width: 10vh;
+    width: center;
+    margin-top: -200px;
+    z-index: 7025
+  }
+
+  section div.box p {
+    color: white;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .logo{
+    margin-left: 30px;
+  }
+
+
+}

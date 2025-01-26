@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Simples com Grid</title>
+    <style>
+        /* Resetando margens e padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Configurações do body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Centralizando a logo */
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 150px; /* Ajuste o tamanho conforme necessário */
+        }
+
+        /* Configuração do container de grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 80%;
+            max-width: 1000px;
+            padding: 20px;
+        }
+
+        /* Estilo das caixas */
+        .grid-item {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer; /* Adiciona o cursor de clique */
+        }
+
+        /* Efeito de hover nas caixas */
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo do título dentro das caixas */
+        .grid-item h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo do texto dentro das caixas */
+        .grid-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Estilo das imagens dentro das caixas */
+        .grid-item img {
+            width: 100%;
+            max-height: 200px; /* Ajuste a altura máxima conforme necessário */
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Estilo da aba de contato */
+        .contact-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .contact-popup a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Estilo de fundo escurecido quando a popup aparece */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Estilo do footer fixo no topo à esquerda */
+        footer {
+            background-color: #f0f0f0;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .footer-p a {
+            color: rgb(3, 1, 1);
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-p a:hover {
+            color: #0084ff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo centralizada -->
+    <div class="logo">
+        <img src="imagens/LOGOTREM.png" alt="Logo da Empresa">
+    </div>
+
+    <!-- Container de grid -->
+    <div class="grid-container">
+        <div class="grid-item" onclick="showContactPopup()">
+            <h2>Plano Premium</h2>
+            <img src="imagens/premium.png" alt="Imagem 1">
+            <ul>
+                <li><strong>Desconto na taxa de 10%</strong></li>
+                <li><strong>Marketing Completo</strong> </li>
+                <li><strong>Promoção nas Redes Sociais</strong> </li>
+                <li><strong>Suporte Prioritário</strong> </li>
+                <li><strong>Relatórios Detalhados</strong> </li>
+                <li><strong>Visibilidade Avançada</strong> </li>
+            </ul>
+        </div>
+
+        <div class="grid-item" onclick="showContactPopup()">
+            <h2>Plano Intermediário</h2>
+            <img src="imagens/intermediario.png" alt="Imagem 2">
+            <ul>
+                <li><strong>Desconto na taxa de 5%</strong></li>
+                <li><strong>Marketing Básico</strong></li>
+                <li><strong>Promoções Limitadas</strong></li>
+                <li><strong>Suporte Padrão</strong></li>
+                <li><strong>Relatórios de Desempenho Básicos</strong></li>
+                <li><strong>Visibilidade nas Categorias</strong></li>
+            </ul>
+        </div>
+
+        <div class="grid-item" onclick="showContactPopup()">
+            <h2>Plano Básico</h2>
+            <img src="imagens/basico.png" alt="Imagem 3">
+            <ul>
+                <li><strong>Taxa de Exibição Padrão</strong></li>
+                <li><strong>Exibição Padrão</strong></li>
+                <li><strong>Sem Promoções Especiais</strong></li>
+                <li><strong>Suporte Básico</strong></li>
+                <li><strong>Relatórios Limitados</strong></li>
+                <li><strong>Exibição nas Categorias</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Aba de contato -->
+    <div class="overlay" id="overlay"></div>
+    <div class="contact-popup" id="contactPopup">
+        <h2>Entre em Contato!</h2>
+        <p>Para mais informações, entre em contato conosco via email.</p>
+        <a href="mailto:tremaquiii@gmail.com">Enviar Email</a>
+    </div>
+
+    <!-- Footer fixo no topo à esquerda -->
+    <footer>
+        <div class="footer-container">
+            <p class="footer-p">
+                <a href="index.html">Página inicial</a>
+                <a href="https://www.youtube.com/@tremaqui">Canal</a>
+                <a href="sobre.html">Saiba mais</a>
+                <a href="https://chat.whatsapp.com/LojhpG3IszYKW7c6OHtScr">Contato</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Função para mostrar a aba de contato
+        function showContactPopup() {
+            document.getElementById('contactPopup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Função para fechar a aba de contato ao clicar no fundo escurecido
+        document.getElementById('overlay').onclick = function() {
+            document.getElementById('contactPopup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
